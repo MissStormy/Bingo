@@ -6,15 +6,14 @@ package bingo;
 
 /**
  *
- * @authors Lara & Vera
+ * @authors Lara & Vera & Tinin
  */
 public class Bingo {
-
-    /**
-     * @param args the command line arguments
-     */
+    //Funciones
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        //Variables
+        
     }
     
 }
