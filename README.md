@@ -6,14 +6,17 @@ En el juego de nuestro bingo el bombo será el ordenador y sacará númerosaleat
 
 ![image](https://user-images.githubusercontent.com/111749007/208056977-94edb010-bfe6-407c-a087-5095d504f2aa.png)
 
-● 9 columnas, en la primera de ellas hay números del 1 al 9, en lasegunda del 10 al 19, en la tercera del 20 al 29, así sucesivamente.
-● Tenemos 3 filas.
-● El total de números del cartón serán 15 y el resto (casillas azules) serán casillas vacías (se puede representar con ceros, asteriscos, XX, etc.)
-● Por cada fila hay 5 números.
+  ● 9 columnas, en la primera de ellas hay números del 1 al 9, en lasegunda del 10 al 19, en la tercera del 20 al 29, así sucesivamente.
+
+  ● Tenemos 3 filas.
+
+  ● El total de números del cartón serán 15 y el resto (casillas azules) serán casillas vacías (se puede representar con ceros, asteriscos, XX, etc.)
+
+  ● Por cada fila hay 5 números.
 
 El programa contará con un menú:
 
 1. Generar cartón (generará un cartón nuevo, con la disposición de losnúmeros y posiciones vacías/nulas aleatorias, máximo 2 números porcolumna, mínimo 1 número por columna)
-2. Mostrar estado del cartón (pintará el estado del cartón según han idosaliendo los números).
-3. Sacar bola. (el programa genera el número aleatorio y según nuestro cartón, el programa nos avisará si has hecho línea, o has cantado bingo).
-4. Salir.
+3. Mostrar estado del cartón (pintará el estado del cartón según han idosaliendo los números).
+4. Sacar bola. (el programa genera el número aleatorio y según nuestro cartón, el programa nos avisará si has hecho línea, o has cantado bingo).
+5. Salir.
