@@ -1,4 +1,5 @@
-// Un asombroso, maravilloso, proyecto de Bingo para navidad
+// Un asombroso, maravilloso, proyecto de Bingo para navidad, para que ganes a tu tia la fascista
+
 
 package bingo;
 import java.util.*;
