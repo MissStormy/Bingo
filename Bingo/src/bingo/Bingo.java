@@ -12,7 +12,7 @@ public class Bingo {
     
     public static void main(String[] args) {
         //Variables
-        
+        Scanner ent = new Scanner(System.in);
     }
     
 }
