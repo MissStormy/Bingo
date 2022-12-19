@@ -46,14 +46,14 @@ public class Bingo {
     }
 
     public static int Bola() {//sacamos la bola y la cantamos como los niños de san ildefonso
-        
+        int bola;
         Random rand = new Random();
         
         System.out.println("El bombo esta girando...");
         System.out.println("La bola esta saliendo...");
-        bolas = rand.nextInt(90)+1;
+        bola = rand.nextInt(90)+1;
         System.out.println("La bola es: " + bola);
-        return bolas;
+        return bola;
     }
 
     public static void Saludo() {
