@@ -1,4 +1,4 @@
-// Un asombroso, maravilloso, proyecto de Bingo para navidad, para que ganes a tu tia la fascista
+// Un asombroso, maravilloso, proyecto de Bingo para navidad, para que ganes a tu abuela
 package bingo;
 
 import java.util.*;
@@ -19,8 +19,13 @@ public class Bingo {
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
     
+    
 
     public static void Menu() {
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
         System.out.println(PURPLE + "-----------------------------");
         System.out.println(CYAN + "<<< Bienvenido al bingo >>>");
         System.out.println(PURPLE + "------------\\(8)/------------");
@@ -41,7 +46,14 @@ public class Bingo {
     }
 
     public static int Bola() {//sacamos la bola y la cantamos como los niños de san ildefonso
-        return 0;
+        
+        Random rand = new Random();
+        
+        System.out.println("El bombo esta girando...");
+        System.out.println("La bola esta saliendo...");
+        bolas = rand.nextInt(90)+1;
+        System.out.println("La bola es: " + bola);
+        return bolas;
     }
 
     public static void Saludo() {
@@ -62,6 +74,8 @@ public class Bingo {
     public static void main(String[] args) {
         //Variables
         Scanner ent = new Scanner(System.in);
+        
+        int[] bolas;
         int opc = 0;
         Saludo(); //esto solo aparece una vez al principio
         
