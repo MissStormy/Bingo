@@ -8,6 +8,7 @@ import java.util.*;
  * @authors Lara & Vera & Tinin
  */
 public class Bingo {
+
     public static final String BLACK = "\033[0;30m";   // BLACK
     public static final String RED = "\033[0;31m";     // RED
     public static final String GREEN = "\033[0;32m";   // GREEN
@@ -16,7 +17,8 @@ public class Bingo {
     public static final String PURPLE = "\033[0;35m";  // PURPLE
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String WHITE = "\033[0;37m";   // WHITE
-    //Funciones
+    
+
     public static void Menu() {
         System.out.println("Bienvenido al bingo");
         System.out.println("-------------------");
@@ -24,30 +26,45 @@ public class Bingo {
         System.out.println("2. Mostrar carton");
         System.out.println("3. Sacar bola");
         System.out.println("4. Salir");
-        
+
     }
-    public static int Gen_Carton(){
+
+    public static int Gen_Carton() {
         return 0;
     }
-    public static void Mos_Carton(){
-        
+
+    public static void Mos_Carton() {
+
     }
-    public static int Bola(){
+
+    public static int Bola() {
         return 0;
     }
-    public static void Saludo(){
-        
+
+    public static void Saludo() {
+        System.out.println(GREEN +"     _____ _"+ PURPLE +"      __________________ _\n"
+                + PURPLE +"\\-------"+ GREEN +"              ---- -\n"
+                + PURPLE +" \\"+ CYAN +"#####################################\n"
+                + PURPLE +" .\\"+CYAN+"#                     "+PURPLE+"|---------|  "+CYAN+"#\n"
+                + PURPLE +"  \\\\"+CYAN+"#      "+PURPLE+"LARA          | MISSING |  "+CYAN+"# .\n"
+                + PURPLE+"   ||"+CYAN+"#	     "+GREEN+"TININ            "+PURPLE+"·       "+CYAN+"#  \n"
+                + PURPLE+"  //"+CYAN+"#           "+PURPLE+"VERA     |    /    |  "+CYAN+"# "+PURPLE+"|\n"
+                + CYAN+"   #                     "+PURPLE+"|---------|  "+CYAN+"#"+PURPLE+"||\n"
+                + CYAN+"  #####################################"+PURPLE+"||\n"
+                + PURPLE+"        ______ ------------------------||\n"
+                + PURPLE+"                  "+GREEN+"---- -     "+PURPLE+"-----------|");
     }
+
     //Objetos
     public static void main(String[] args) {
         //Variables
         Scanner ent = new Scanner(System.in);
         int opc = 0;
         Saludo();
-        while (opc != 4) {
+        /*while (opc != 4) {
             //Menu();
             opc = ent.nextInt();
-        }
+        }*/
 
     }
 
