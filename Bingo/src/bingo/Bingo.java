@@ -7,6 +7,7 @@ import java.util.*;
  *
  * @authors Lara & Vera & Tinin
  */
+
 public class Bingo {
 
     public static final String BLACK = "\033[0;30m";   // BLACK
@@ -20,8 +21,9 @@ public class Bingo {
     
 
     public static void Menu() {
-        System.out.println("Bienvenido al bingo");
-        System.out.println("-------------------");
+        System.out.println(PURPLE + "-----------------------------");
+        System.out.println(CYAN + "<<< Bienvenido al bingo >>>");
+        System.out.println(PURPLE + "------------\\(8)/------------");
         System.out.println("1. Generar carton");
         System.out.println("2. Mostrar carton");
         System.out.println("3. Sacar bola");
@@ -29,15 +31,16 @@ public class Bingo {
 
     }
 
-    public static int Gen_Carton() {
+    public static int Gen_Carton() {//esto tiene que generar un carton para la abuela, tendriamos que poner alguna comprobacion para
+                                    //que no se pueda sacar mas de uno hasta que no se haya acabado el juego
         return 0;
     }
 
-    public static void Mos_Carton() {
+    public static void Mos_Carton() {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
 
     }
 
-    public static int Bola() {
+    public static int Bola() {//sacamos la bola y la cantamos como los niños de san ildefonso
         return 0;
     }
 
@@ -48,11 +51,11 @@ public class Bingo {
                 + PURPLE +" .\\"+CYAN+"#                     "+PURPLE+"|---------|  "+CYAN+"#\n"
                 + PURPLE +"  \\\\"+CYAN+"#      "+PURPLE+"LARA          | MISSING |  "+CYAN+"# .\n"
                 + PURPLE+"   ||"+CYAN+"#	     "+GREEN+"TININ            "+PURPLE+"·       "+CYAN+"#  \n"
-                + PURPLE+"  //"+CYAN+"#           "+PURPLE+"VERA     |    /    |  "+CYAN+"# "+PURPLE+"|\n"
-                + CYAN+"   #                     "+PURPLE+"|---------|  "+CYAN+"#"+PURPLE+"||\n"
-                + CYAN+"  #####################################"+PURPLE+"||\n"
-                + PURPLE+"        ______ ------------------------||\n"
-                + PURPLE+"                  "+GREEN+"---- -     "+PURPLE+"-----------|");
+                + PURPLE+"  //"+CYAN+"#           "+PURPLE+"VERA     |    /    |  "+CYAN+"# "+PURPLE+" |\n"
+                + CYAN+"   #                     "+PURPLE+"|---------|  "+CYAN+"#"+PURPLE+"| |\n"
+                + CYAN+"  #####################################"+PURPLE+"| |\n"
+                + PURPLE+"        ______ ------------------------| |\n"
+                + PURPLE+"                  "+GREEN+"---- -     "+PURPLE+"------------|");
     }
 
     //Objetos
@@ -60,11 +63,27 @@ public class Bingo {
         //Variables
         Scanner ent = new Scanner(System.in);
         int opc = 0;
-        Saludo();
-        /*while (opc != 4) {
-            //Menu();
+        Saludo(); //esto solo aparece una vez al principio
+        
+        while (opc != 4) {
+            Menu();
             opc = ent.nextInt();
-        }*/
+            switch(opc){
+                case 1:
+                    Gen_Carton();
+                    break;
+                case 2:
+                    Mos_Carton();
+                    break;
+                case 3:
+                    Bola();
+                    break;
+                case 4:
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 
