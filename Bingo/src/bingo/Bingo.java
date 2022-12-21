@@ -94,14 +94,29 @@ public class Bingo {
         System.out.println("La bola esta saliendo...");
 
         System.out.println("La bola es: " + bola);
-        for (b = 1; b < 90; b++) {
+        for (b = 0; b < 89; b++) {
             if (bola == bolas[b]) {
-
+                bolas[b] = 0;
+                //return bolas[b];
+            }else if(bolas[b]==0){
+                bola++;
+                if(bola>89){
+                    bola = 1;
+                }
             }
         }
+        //for (b = 0; b < 89; b++) {
+        //    System.out.println(bolas[b]);
+        //}
+
         return bola;
     }
-
+    public static void Mostrar_Num(int[] bolas){
+        for(int i=0;i<89;i++){
+            System.out.println(bolas[i]);
+        }
+        
+    }
     public static void Saludo() {
         System.out.println(GREEN + "     _____ _" + PURPLE + "      __________________ _\n"
                 + PURPLE + "\\-------" + GREEN + "              ---- -\n"
@@ -141,13 +156,15 @@ public class Bingo {
                     Mos_Carton();
                     break;
                 case 3:
-                    int b;
+                    int b = 0;
                     bola = rand.nextInt(90) + 1;
                     Bola(bola, bolas, b);
 
                     break;
                 case 4:
                     break;
+                case 5:
+                    Mostrar_Num(bolas);
                 default:
                     break;
             }
