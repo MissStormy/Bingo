@@ -41,17 +41,18 @@ public class Bingo {
                 int casilla = (int) (Math.random() * 9);
                 if (bloqueadas[i][casilla] == 0 && (bloqueadas[1][casilla] == 0 | bloqueadas[2][casilla] == 0)) {
                     bloqueadas[i][casilla] = 1;
-                    i++;
+                    j++;
                 }
             }
         }
-        for (int i = 0; i < carton.length; i++) {   //Generamos los numeros que se pondran en las casillas libres y los establecemos
+        for (int i = 0; i < 8; i++) {   //Generamos los numeros que se pondran en las casillas libres y los establecemos
             int[] columna = {10, 10, 10};
             if (i > 0) {                               //generamos los numeros de la columna
                 for (int j = 0; j < columna.length;) {
                     int num = (int) (Math.random() * 9);
                     if (num != columna[0] && num != columna[1] && num != columna[2]) {
                         columna[j] = num;
+                        j++;
                     }
                 }
             } else {
@@ -59,29 +60,32 @@ public class Bingo {
                     int num = (int) (Math.random() * 8) + 1;
                     if (num != columna[0] && num != columna[1] && num != columna[2]) {
                         columna[j] = num;
+                        j++;
                     }
                 }
             }
-            int[] pos = new int[columna.length]; //Ordenamos los numeros de la columna de menor a mayor
-            for (int j = 0; j < columna.length; j++) {
-                pos[j] = 0;
+            for (int j = 0; j < columna.length;) { //Ordenamos los numeros de la columna de menor a mayor
+                int pos = 0;
                 for (int k = 0; k < columna.length; k++) {
-                    if ((k != j) && (columna[k] < columna[j])) {
-                        pos[j]++;
+                    if (columna[j] > columna[k]){
+                        pos++;
                     }
                 }
+                if (pos>j){
+                    int temp = columna[pos];
+                    columna[pos]=columna[j];
+                    columna[j]=temp;
+                }else if(pos == j){
+                    j++;
+                }
             }
-            int temp;
-            for (int j = 0; j < columna.length; j++) {
-                //to do: ACABAR ESTA MIERDA
-            }
-            for (int j = 0; j < carton[i].length; j++) {
-                if (bloqueadas[i][j] == 0) {
-                    carton[i][j] = columna[j] + i * 10;
+            for (int j = 0; j < 3; j++) {
+                if (bloqueadas[j][i] == 0) {
+                    carton[j][i] = columna[j] + i * 10;
                 }
             }
         }
-        return null;
+        return carton;
     }
 
     public static void Mos_Carton() {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
