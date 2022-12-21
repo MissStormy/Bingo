@@ -45,7 +45,7 @@ public class Bingo {
                 }
             }
         }
-        for (int i = 0; i < carton.length; i++) {   //Generamos los numeros que se pondran en las casillas libres y los establecemos
+        for (int i = 0; i < 8; i++) {   //Generamos los numeros que se pondran en las casillas libres y los establecemos
             int[] columna = {10, 10, 10};
             if (i > 0) {                               //generamos los numeros de la columna
                 for (int j = 0; j < columna.length;) {
@@ -79,9 +79,9 @@ public class Bingo {
                     j++;
                 }
             }
-            for (int j = 0; j < carton.length; j++) {
-                if (bloqueadas[i][j] == 0) {
-                    carton[i][j] = columna[j] + i * 10;
+            for (int j = 0; j < 3; j++) {
+                if (bloqueadas[j][i] == 0) {
+                    carton[j][i] = columna[j] + i * 10;
                 }
             }
         }
