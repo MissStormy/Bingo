@@ -98,13 +98,14 @@ public class Bingo {
         System.out.println("La bola esta saliendo...");
 
         System.out.println("La bola es: " + bola);
-        for (b = 0; b < 89; b++) {
-            if (bola == bolas[b]) {
+        
+        for (b = 0; b < 89; b++) { //recorremos el array de bolas posibles
+            if (bola == bolas[b]) {//si la bola coincide con alguna de las opciones, pone un 0 para mostrar que ese numero ha salido
                 bolas[b] = 0;
                 //return bolas[b];
-            }else if(bolas[b]==0){
+            }else if(bolas[b]==0){//en caso de que ese numero ya haya salido, coge el siguiente
                 bola++;
-                if(bola>89){
+                if(bola>89){//si llega el final del array, la bola pasa a valer 1 para ir al principio
                     bola = 1;
                 }
             }
