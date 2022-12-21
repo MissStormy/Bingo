@@ -45,7 +45,7 @@ public class Bingo {
                 }
             }
         }
-        for (int i = 0; i < 8; i++) {   //Generamos los numeros que se pondran en las casillas libres y los establecemos
+        for (int i = 0; i < 9; i++) {   //Generamos los numeros que se pondran en las casillas libres y los establecemos
             int[] columna = {10, 10, 10};
             if (i > 0) {                               //generamos los numeros de la columna
                 for (int j = 0; j < columna.length;) {
