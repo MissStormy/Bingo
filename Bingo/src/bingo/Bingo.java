@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  *
- * @authors Lara & Vera & Tinin
+ * @authors Lara & Vera
  */
 public class Bingo {
 
@@ -37,7 +37,7 @@ public class Bingo {
         //que no se pueda sacar mas de uno hasta que no se haya acabado el juego
         for (int i = 0; i < carton.length; i++) { //borrar carton antes de regenerarlo
             for (int j = 0; j < carton[i].length; j++) {
-                carton[i][j]=0;
+                carton[i][j] = 0;
             }
         }
         int[][] bloqueadas = new int[3][9];
@@ -93,63 +93,83 @@ public class Bingo {
         return carton;
     }
 
-
-
     public static void Mos_Carton(int[][] carton, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
+        boolean bingo = true;
+        boolean linea = true;
         for (int i = 0; i < carton.length; i++) {
+            linea = true;
             for (int j = 0; j < carton[i].length; j++) {
-                if(carton[i][j]==0){
-                    System.out.print("| " + CYAN +"##" + WHITE + " |");
-                }else if (carton[i][j]==100){
-                    System.out.print("| " + PURPLE +"##" + WHITE + " |");
+                if (carton[i][j] == 0) {
+                    System.out.print(WHITE + "| " + CYAN + "##" + WHITE + " |");
+                } else if (carton[i][j] == 100) {
+                    System.out.print(WHITE + "| " + PURPLE + "##" + WHITE + " |");
+                } else {
+                    System.out.print(WHITE + "| " + carton[i][j] + " |");
+                    linea = false;
+                    bingo = false;
                 }
-                else{System.out.print("| "+ carton[i][j] +" |");}
+            }
+            if (linea) {
+                System.out.print("  ¡¡LINEA!!");
             }
             System.out.println("");
         }
+        if (bingo) {
+            System.out.println("          ¡¡¡BINGO!!!");
+        }
 
     }
-    
+
     /*public static void Mos_Carton(int[][] carton1, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido 
        
     }*/
-
-    public static int Bola(int bola, int[] bolas, int b, int[][] carton) {//sacamos la bola y la cantamos como los niños de san ildefonso
-
-        System.out.println("El bombo esta girando...");
-        System.out.println("La bola esta saliendo...");
-
-        System.out.println("La bola es: " + bola);
-
-        for (b = 0; b < 89; b++) { //recorremos el array de bolas posibles
-            if (bola == bolas[b]) {//si la bola coincide con alguna de las opciones, pone un 0 para mostrar que ese numero ha salido
-                bolas[b] = 0;
-                //return bolas[b];
-            } else if (bolas[b] == 0) {//en caso de que ese numero ya haya salido, coge el siguiente
-                bola++;
-                if (bola > 89) {//si llega el final del array, la bola pasa a valer 1 para ir al principio
-                    bola = 1;
-                }
+    public static int Bola(int bola, int[] bolas, int b, int[][] carton, int bolas_sacadas) {//sacamos la bola y la cantamos como los niños de san ildefonso
+        boolean quedan = false;
+        for (int i = 0; i < bolas.length; i++) {
+            if (bolas[i] != 0) {
+                quedan = true;
+                i = bolas.length;
             }
         }
-        for (int i = 0; i < carton.length; i++) {
-            for (int j = 0; j < carton[i].length; j++) {
-                for (int k = 0; k < bolas.length; k++) {
-                    if (carton[i][j]!=100) {
-                        if (bolas[carton[i][j]]==0){
-                        carton[i][j]=100;
+        if (quedan) {
+            bolas_sacadas++;
+            System.out.println("El bombo esta girando...");
+            System.out.println("La bola esta saliendo...");
+            
+            boolean vanpiro_esiten = false;
+            while (!vanpiro_esiten){
+            for (b = 0; b < 89; b++) { //recorremos el array de bolas posibles
+                if (bola == bolas[b]) {//si la bola coincide con alguna de las opciones, pone un 0 para mostrar que ese numero ha salido
+                    bolas[b] = 0;
+                    vanpiro_esiten=true;
+                    //return bolas[b];
+                }
+            }
+            bola++;
+            }
+
+            System.out.println("La bola es: " + (bola-1) + "Se han sacado "+bolas_sacadas+" bolas.");
+
+            for (int i = 0; i < carton.length; i++) {
+                for (int j = 0; j < carton[i].length; j++) {
+                    for (int k = 0; k < bolas.length; k++) {
+                        if (carton[i][j] != 100 && carton[i][j] != 0) {
+                            if (bolas[(carton[i][j] - 1)] == 0) {
+                                carton[i][j] = 100;
+                            }
                         }
                     }
                 }
             }
+            //for (b = 0; b < 89; b++) {
+            //    System.out.println(bolas[b]);
+            //}
+
+            
         }
-        //for (b = 0; b < 89; b++) {
-        //    System.out.println(bolas[b]);
-        //}
-
-        return bola;
+        return bolas_sacadas;
     }
-
+    
     public static void Mostrar_Num(int[] bolas) {
         for (int i = 0; i < 89; i++) {
             System.out.println(bolas[i]);
@@ -176,6 +196,7 @@ public class Bingo {
         //Variables
         Scanner ent = new Scanner(System.in);
         Random rand = new Random();
+        int bolas_sacadas = 0;
 
         int[] bolas = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
             45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89};
@@ -193,18 +214,22 @@ public class Bingo {
                     Gen_Carton(carton1);
                     break;
                 case 2:
-                    Mos_Carton(carton1,bolas);
+                    Mos_Carton(carton1, bolas);
                     break;
                 case 3:
                     int b = 0;
-                    bola = rand.nextInt(90) + 1;
-                    Bola(bola, bolas, b,carton1);
+                    bola = rand.nextInt(88) + 1;
+                    bolas_sacadas = Bola(bola, bolas, b, carton1, bolas_sacadas);
 
                     break;
                 case 4:
                     break;
                 case 5:
                     Mostrar_Num(bolas);
+                    break;
+                case 7:
+                    System.out.println(bolas_sacadas);
+                    break;
                 default:
                     break;
             }
