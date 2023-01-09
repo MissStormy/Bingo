@@ -93,10 +93,8 @@ public class Bingo {
         return carton;
     }
 
-<<<<<<< Updated upstream
-    public static void Mos_Carton() {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
- 
-=======
+
+
     public static void Mos_Carton(int[][] carton, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
         for (int i = 0; i < carton.length; i++) {
             for (int j = 0; j < carton[i].length; j++) {
@@ -109,7 +107,7 @@ public class Bingo {
             }
             System.out.println("");
         }
->>>>>>> Stashed changes
+
     }
     
     /*public static void Mos_Carton(int[][] carton1, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido 
