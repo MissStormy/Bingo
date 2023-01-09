@@ -67,15 +67,15 @@ public class Bingo {
             for (int j = 0; j < columna.length;) { //Ordenamos los numeros de la columna de menor a mayor
                 int pos = 0;
                 for (int k = 0; k < columna.length; k++) {
-                    if (columna[j] > columna[k]){
+                    if (columna[j] > columna[k]) {
                         pos++;
                     }
                 }
-                if (pos>j){
+                if (pos > j) {
                     int temp = columna[pos];
-                    columna[pos]=columna[j];
-                    columna[j]=temp;
-                }else if(pos == j){
+                    columna[pos] = columna[j];
+                    columna[j] = temp;
+                } else if (pos == j) {
                     j++;
                 }
             }
@@ -89,8 +89,12 @@ public class Bingo {
     }
 
     public static void Mos_Carton() {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
-
+ 
     }
+    
+    /*public static void Mos_Carton(int[][] carton1, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido 
+       
+    }*/
 
     public static int Bola(int bola, int[] bolas, int b) {//sacamos la bola y la cantamos como los niños de san ildefonso
 
@@ -98,14 +102,14 @@ public class Bingo {
         System.out.println("La bola esta saliendo...");
 
         System.out.println("La bola es: " + bola);
-        
+
         for (b = 0; b < 89; b++) { //recorremos el array de bolas posibles
             if (bola == bolas[b]) {//si la bola coincide con alguna de las opciones, pone un 0 para mostrar que ese numero ha salido
                 bolas[b] = 0;
                 //return bolas[b];
-            }else if(bolas[b]==0){//en caso de que ese numero ya haya salido, coge el siguiente
+            } else if (bolas[b] == 0) {//en caso de que ese numero ya haya salido, coge el siguiente
                 bola++;
-                if(bola>89){//si llega el final del array, la bola pasa a valer 1 para ir al principio
+                if (bola > 89) {//si llega el final del array, la bola pasa a valer 1 para ir al principio
                     bola = 1;
                 }
             }
@@ -116,20 +120,22 @@ public class Bingo {
 
         return bola;
     }
-    public static void Mostrar_Num(int[] bolas){
-        for(int i=0;i<89;i++){
+
+    public static void Mostrar_Num(int[] bolas) {
+        for (int i = 0; i < 89; i++) {
             System.out.println(bolas[i]);
         }
-        
+
     }
+
     public static void Saludo() {
         System.out.println(GREEN + "     _____ _" + PURPLE + "      __________________ _\n"
                 + PURPLE + "\\-------" + GREEN + "              ---- -\n"
                 + PURPLE + " \\" + CYAN + "#####################################\n"
                 + PURPLE + " .\\" + CYAN + "#                     " + PURPLE + "|---------|  " + CYAN + "#\n"
                 + PURPLE + "  \\\\" + CYAN + "#      " + PURPLE + "LARA          | MISSING |  " + CYAN + "# .\n"
-                + PURPLE + "   ||" + CYAN + "#	     " + GREEN + "TININ            " + PURPLE + "·       " + CYAN + "#  \n"
-                + PURPLE + "  //" + CYAN + "#           " + PURPLE + "VERA     |    /    |  " + CYAN + "# " + PURPLE + " |\n"
+                //+ PURPLE + "   ||" + CYAN + "#	     " + GREEN + "TININ            " + PURPLE + "·       " + CYAN + "#  \n"
+                + PURPLE + "  //" + CYAN + "#           " + PURPLE + "VERA     |    ;    |  " + CYAN + "# " + PURPLE + " |\n"
                 + CYAN + "   #                     " + PURPLE + "|---------|  " + CYAN + "#" + PURPLE + "| |\n"
                 + CYAN + "  #####################################" + PURPLE + "| |\n"
                 + PURPLE + "        ______ ------------------------| |\n"
