@@ -146,9 +146,10 @@ public class Bingo {
                 }
             }
             bola++;
+            if (bola >89)bola=1;
             }
 
-            System.out.println("La bola es: " + (bola-1) + "Se han sacado "+bolas_sacadas+" bolas.");
+            System.out.println("La bola es: " + (bola-1));
 
             for (int i = 0; i < carton.length; i++) {
                 for (int j = 0; j < carton[i].length; j++) {
@@ -166,7 +167,7 @@ public class Bingo {
             //}
 
             
-        }
+        }else System.out.println("No quedan mas bolas");
         return bolas_sacadas;
     }
     
