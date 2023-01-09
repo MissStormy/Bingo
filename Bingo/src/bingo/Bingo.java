@@ -110,9 +110,7 @@ public class Bingo {
 
     }
     
-    /*public static void Mos_Carton(int[][] carton1, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido 
-       
-    }*/
+    
 
     public static int Bola(int bola, int[] bolas, int b, int[][] carton) {//sacamos la bola y la cantamos como los niños de san ildefonso
 
