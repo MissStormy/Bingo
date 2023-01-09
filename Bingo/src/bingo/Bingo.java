@@ -35,11 +35,16 @@ public class Bingo {
 
     public static int[][] Gen_Carton(int[][] carton) {//esto tiene que generar un carton para la abuela, tendriamos que poner alguna comprobacion para
         //que no se pueda sacar mas de uno hasta que no se haya acabado el juego
+        for (int i = 0; i < carton.length; i++) { //borrar carton antes de regenerarlo
+            for (int j = 0; j < carton[i].length; j++) {
+                carton[i][j]=0;
+            }
+        }
         int[][] bloqueadas = new int[3][9];
         for (int i = 0; i < bloqueadas.length; i++) {
             for (int j = 0; j < 4;) {//Generamos las 4 casillas que estaran bloaqueadas en cada linea, con cuidado al crear la tercera linea de que no haya ninguna columna entera bloqueada
                 int casilla = (int) (Math.random() * 9);
-                if (bloqueadas[i][casilla] == 0 && (bloqueadas[1][casilla] == 0 | bloqueadas[2][casilla] == 0)) {
+                if (bloqueadas[i][casilla] == 0 && (bloqueadas[1][casilla] == 0 || bloqueadas[2][casilla] == 0)) {
                     bloqueadas[i][casilla] = 1;
                     j++;
                 }
@@ -50,7 +55,7 @@ public class Bingo {
             if (i > 0) {                               //generamos los numeros de la columna
                 for (int j = 0; j < columna.length;) {
                     int num = (int) (Math.random() * 9);
-                    if (num != columna[0] && num != columna[1] && num != columna[2]) {
+                    if (num != columna[0] && num != columna[1] && num != columna[2]) { //por alguna razon genera columnas bloqueadas enteras, habria que mirarlo o algo supongo
                         columna[j] = num;
                         j++;
                     }
@@ -88,15 +93,30 @@ public class Bingo {
         return carton;
     }
 
+<<<<<<< Updated upstream
     public static void Mos_Carton() {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
  
+=======
+    public static void Mos_Carton(int[][] carton, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido y los que no, buscar como hacerlo con JAVAFX
+        for (int i = 0; i < carton.length; i++) {
+            for (int j = 0; j < carton[i].length; j++) {
+                if(carton[i][j]==0){
+                    System.out.print("| " + CYAN +"##" + WHITE + " |");
+                }else if (carton[i][j]==100){
+                    System.out.print("| " + PURPLE +"##" + WHITE + " |");
+                }
+                else{System.out.print("| "+ carton[i][j] +" |");}
+            }
+            System.out.println("");
+        }
+>>>>>>> Stashed changes
     }
     
     /*public static void Mos_Carton(int[][] carton1, int[] bolas) {//mostramos el carton con los numeros que ya nos han salido 
        
     }*/
 
-    public static int Bola(int bola, int[] bolas, int b) {//sacamos la bola y la cantamos como los niños de san ildefonso
+    public static int Bola(int bola, int[] bolas, int b, int[][] carton) {//sacamos la bola y la cantamos como los niños de san ildefonso
 
         System.out.println("El bombo esta girando...");
         System.out.println("La bola esta saliendo...");
@@ -111,6 +131,17 @@ public class Bingo {
                 bola++;
                 if (bola > 89) {//si llega el final del array, la bola pasa a valer 1 para ir al principio
                     bola = 1;
+                }
+            }
+        }
+        for (int i = 0; i < carton.length; i++) {
+            for (int j = 0; j < carton[i].length; j++) {
+                for (int k = 0; k < bolas.length; k++) {
+                    if (carton[i][j]!=100) {
+                        if (bolas[carton[i][j]]==0){
+                        carton[i][j]=100;
+                        }
+                    }
                 }
             }
         }
@@ -164,12 +195,12 @@ public class Bingo {
                     Gen_Carton(carton1);
                     break;
                 case 2:
-                    Mos_Carton();
+                    Mos_Carton(carton1,bolas);
                     break;
                 case 3:
                     int b = 0;
                     bola = rand.nextInt(90) + 1;
-                    Bola(bola, bolas, b);
+                    Bola(bola, bolas, b,carton1);
 
                     break;
                 case 4:
